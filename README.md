@@ -1,5 +1,9 @@
 <!-- deno-fmt-ignore-file -->
 
+# NOTE
+
+This module is experimental, and should not be used in production yet by any means!
+
 # Deno KV REST API
 
 This module provides utilities to attach a flexible RESTful API to a [Deno KV](https://deno.com/kv) data store.
