@@ -1,20 +1,29 @@
 <!-- deno-fmt-ignore-file -->
 
-# NOTE
-
-This module is experimental, and should not be used in production yet by any means!
-
 # Deno KV REST API
+
+> **NOTE:** This module is still under active development, and not suitable for production use.
 
 This module provides utilities to attach a flexible RESTful API to a [Deno KV](https://deno.com/kv) data store.
 
 ## Usage with Fresh
 
-TODO
+This module provides a helper function to generate a Fresh [Handlers object](https://fresh.deno.dev/docs/getting-started/custom-handlers). In the `routes` folder of your Fresh project, create a new `kv` folder. In that folder, create a file called `[...path].ts`, and include the following code:
+
+```typescript
+import { Handlers } from "$fresh/server.ts";
+import { generateFreshHandlers } from "../../../../mod.ts";
+
+export const handler: Handlers = generateFreshHandlers({
+  prefix: "/kv",
+});
+```
+
+This will add the REST API documented below to your Fresh project, under `/kv`.
 
 ## Usage with Oak
 
-TODO
+Support for [Oak](https://deno.land/x/oak) is coming soon!
 
 ## Authentication and authorization
 
@@ -24,7 +33,7 @@ We may provide more help for this in future iterations of this module.
 
 ## REST API Usage
 
-Once the API is attached to your server of choice, the following routes and HTTP methods are supported - this assumes you have attached the API to the default `/kv` path in your routing scheme. Each KV operation is mapped to a route and HTTP verb. For example, to [get a specific key](https://deno.com/manual/runtime/kv/operations#get) with a key value of `["users", "kevin"]`, you would make an HTTP GET request to:
+Once the API is attached to your server of choice, the following routes and HTTP methods are supported - this assumes you have attached the API to the default `/kv` path in your routing scheme. Each KV operation is mapped to a route and HTTP verb. For example, to [get a specific key](https://deno.com/manual/runtime/kv/operations#get) with a key value of `["users", "kevin"]`, you would make an HTTP `GET` request to:
 
 ```
 /kv?key=users,kevin
@@ -34,8 +43,11 @@ Which would return a JSON representation of the same method call in Deno KV like
 
 ```
 {
-  "key": ["some", "key"],
-  "value": { "some": "value" },
+  "key": ["users", "kevin"],
+  "value": {
+    "username": "kevin",
+    "admin": true
+  },
   "versionstamp": "000001"
 }
 ```
