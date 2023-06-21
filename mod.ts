@@ -1,5 +1,3 @@
 import generateHandlers from "./fresh.ts";
 
-export default {
-  generateFreshHandlers: generateHandlers,
-};
+export { generateHandlers as generateFreshHandlers };
