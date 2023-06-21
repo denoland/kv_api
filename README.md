@@ -130,16 +130,10 @@ Body:
 Example response (`application/json`):
 
 ```
-[
-  {
-    "key": ["users", "kevin"],
-    "value": {
-      "username": "kevin",
-      "admin": true
-    },
-    "versionstamp": "000001"
-  }
-]
+{
+	"ok": true,
+	"versionstamp": "00000000000000010000"
+}
 ```
 
 ### sum
