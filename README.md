@@ -1,10 +1,10 @@
 <!-- deno-fmt-ignore-file -->
 
-# Deno KV REST API
-
 > **NOTE:** This module is still under active development, and not suitable for production use.
 
-This module provides utilities to attach a flexible RESTful API to a [Deno KV](https://deno.com/kv) data store.
+# Deno KV REST API
+
+This module provides utilities to attach a flexible RESTful API to a [Deno KV](https://deno.com/kv) data store. This API makes it possible to connect other applications to your KV store in any environment that can make HTTP requests.
 
 ## Usage with Fresh
 
